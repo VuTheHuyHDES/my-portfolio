@@ -31,6 +31,7 @@
         justify-content: space-between;
 
     }
+
     .nav_contact_link {
         height: 5vh;
         padding: 0.75ch 1.5vh;
@@ -39,19 +40,20 @@
         cursor: pointer;
         transition: 0.3 ease;
     }
+
     .nav_contact_link:hover {
         background-color: white;
         color: black;
     }
 
-    .sub_hero_text{
+    .sub_hero_text {
         display: flex;
         justify-content: flex-end;
         font-size: 1vw;
         font-weight: 400;
     }
 
-    .sub_hero_text p{
+    .sub_hero_text p {
         width: 35vw;
         margin-top: 5vh;
     }
@@ -62,7 +64,7 @@
         line-height: 1;
     }
 
-    .scoll_btn{
+    .scoll_btn {
         position: absolute;
         bottom: 2vh;
         right: 3vh;
@@ -78,7 +80,7 @@
 
     }
 
-    .about_section img{
+    .about_section img {
         position: absolute;
         top: 0;
         left: 0;
@@ -89,13 +91,13 @@
     }
 
     .about_span {
-        font-size: 5vw;
+        font-size: 8vw;
         z-index: 1;
         margin: 2vw;
     }
 
     .about_content {
-        font-size: 2vw;
+        font-size: 3vw;
         z-index: 1;
         margin-bottom: 100vh;
         display: flex;
@@ -114,18 +116,35 @@
     }
 
     .about_text {
-        font-size: 1.5vw;
+        font-size: 2.5vw;
         width: 95%;
     }
 
     .skills {
         z-index: 1;
         padding: 0 2.5%;
-        font-family: "Atton", sans-serif;
+        font-family: "Anton", sans-serif;
         text-transform: uppercase;
-        font-size: 2vw;
+        font-size: 3vw;
         display: flex;
         justify-content: flex-start;
-        gap: 2nw;
+        gap: 5vw;
+        overflow: hidden;
+    }
 
+    .skills span {
+        width: 40%;
+        /* Chiếm 40% để tạo khoảng trống 2 cột */
+        text-align: center;
+        /* Căn giữa chữ bên trong span */
+        border: 1px solid white;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3 ease;
+    }
+
+    /* Hiệu ứng khi di chuột vào (Hover) */
+    .skills span:hover {
+        background-color: white;
+        color: black;
     }

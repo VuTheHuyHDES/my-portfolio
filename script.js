@@ -10,33 +10,31 @@ const toggleIcons = document.querySelectorAll('.toggle-icon');
 const icons = document.querySelectorAll('.toggle-icon i');
 const darkContainer = document.querySelector('#dark-container');
 
-// 2. Xử lý chuyển đổi Dark Mode
+// 2. Chuyển đổi Dark Mode
 toggleIcons.forEach(toggle => {
   toggle.addEventListener('click', () => {
-    toggle.classList.add('disable');
-    setTimeout(() => toggle.classList.remove('disable'), 1500);
-
     icons.forEach(icon => {
       icon.classList.toggle('bx-sun');
       icon.classList.toggle('bx-moon');
     });
-
     container.classList.toggle('active');
     darkContainer.classList.toggle('active');
   });
 });
 
-// 3. Xử lý Menu Mobile cho cả 2 bản
-const setupMenu = (parentSelector) => {
-  const parent = document.querySelector(parentSelector);
-  const menuIcon = parent.querySelector('#menu-icon');
-  const navbar = parent.querySelector('.navbar');
-  const navLinks = parent.querySelectorAll('.navbar a');
+// 3. Xử lý Menu Mobile cho cả 2 bản giao diện
+const setupMenu = (id) => {
+  const root = document.querySelector(id);
+  const menuIcon = root.querySelector('#menu-icon');
+  const navbar = root.querySelector('.navbar');
+  const navLinks = root.querySelectorAll('.navbar a');
 
-  menuIcon.onclick = () => {
-    navbar.classList.toggle('active');
-    menuIcon.querySelector('i').classList.toggle('bx-x');
-  };
+  if (menuIcon) {
+    menuIcon.onclick = () => {
+      navbar.classList.toggle('active');
+      menuIcon.querySelector('i').classList.toggle('bx-x');
+    };
+  }
 
   navLinks.forEach(link => {
     link.onclick = () => {
@@ -49,16 +47,24 @@ const setupMenu = (parentSelector) => {
 setupMenu('#container');
 setupMenu('#dark-container');
 
-// 4. Scroll Reveal - Hiệu ứng hiện hình khi cuộn
-const sr = ScrollReveal({
-  distance: '80px',
-  duration: 2000,
-  delay: 200,
-  reset: false // Hiện 1 lần hoặc set true để hiện lại mỗi lần cuộn
-});
+// 4. Khởi tạo Scroll Reveal
+window.addEventListener('load', () => {
+  const sr = ScrollReveal({
+    distance: '60px',
+    duration: 2000,
+    delay: 200,
+    reset: false
+  });
 
-// Cấu hình cho từng nhóm
-sr.reveal('.logo, .reveal-top', { origin: 'top' });
-sr.reveal('.home-img, .reveal-bottom, .social-media, .btn', { origin: 'bottom' });
-sr.reveal('.home-content h1, .reveal-left', { origin: 'left' });
-sr.reveal('.home-content p, .reveal-right', { origin: 'right' });
+  sr.reveal('.reveal-top', { origin: 'top' });
+  sr.reveal('.reveal-bottom, .social-media, .btn', { origin: 'bottom', interval: 150 });
+  sr.reveal('.reveal-left', { origin: 'left' });
+  
+  // Hiệu ứng cho ảnh: bay từ dưới lên và to dần
+  sr.reveal('.home-img', { 
+    origin: 'bottom', 
+    scale: 0.8, 
+    duration: 2500,
+    delay: 400 
+  });
+});

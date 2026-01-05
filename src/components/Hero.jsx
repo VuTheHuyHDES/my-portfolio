@@ -64,17 +64,14 @@ const Hero = () => {
                     </div>
 
                     <div className="hero-social">
-                        <a href="#" className="social-link" title="Facebook">
+                        <a href="https://www.facebook.com/huko7141" target="_blank" rel="noopener noreferrer" className="social-link" title="Facebook">
                             <i className='bx bxl-facebook'></i>
                         </a>
-                        <a href="#" className="social-link" title="Instagram">
+                        <a href="https://www.instagram.com/_thhuy.vu/" target="_blank" rel="noopener noreferrer" className="social-link" title="Instagram">
                             <i className='bx bxl-instagram'></i>
                         </a>
-                        <a href="#" className="social-link" title="GitHub">
+                        <a href="https://github.com/VuTheHuyHDES" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">
                             <i className='bx bxl-github'></i>
-                        </a>
-                        <a href="#" className="social-link" title="LinkedIn">
-                            <i className='bx bxl-linkedin'></i>
                         </a>
                     </div>
                 </div>

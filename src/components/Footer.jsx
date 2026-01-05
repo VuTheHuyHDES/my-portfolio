@@ -57,10 +57,15 @@ const Footer = () => {
                         © {currentYear} Vũ Thế Huy. {t('allRights')}
                     </p>
                     <div className="footer-social">
-                        <a href="#" title="Facebook"><i className='bx bxl-facebook'></i></a>
-                        <a href="#" title="Instagram"><i className='bx bxl-instagram'></i></a>
-                        <a href="#" title="GitHub"><i className='bx bxl-github'></i></a>
-                        <a href="#" title="LinkedIn"><i className='bx bxl-linkedin'></i></a>
+                        <a href="https://www.facebook.com/huko7141" target="_blank" rel="noopener noreferrer" title="Facebook">
+                            <i className='bx bxl-facebook'></i>
+                        </a>
+                        <a href="https://www.instagram.com/_thhuy.vu/" target="_blank" rel="noopener noreferrer" title="Instagram">
+                            <i className='bx bxl-instagram'></i>
+                        </a>
+                        <a href="https://github.com/VuTheHuyHDES" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <i className='bx bxl-github'></i>
+                        </a>
                     </div>
                 </div>
             </div>

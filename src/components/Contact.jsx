@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import './Contact.css';
 
 const Contact = () => {
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -182,7 +182,7 @@ const Contact = () => {
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
-                                placeholder={language === 'vi' ? 'Mô tả dự án của bạn...' : 'Tell me about your project...'}
+                                placeholder={t('messagePlaceholder')}
                                 rows="5"
                                 required
                             ></textarea>

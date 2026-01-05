@@ -172,6 +172,17 @@ section {
   background: rgba(0, 255, 136, 0.1);
 }
 
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.btn-outline:hover {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+}
+
 /* Section Label */
 .section-label {
   display: flex;

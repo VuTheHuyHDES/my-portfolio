@@ -26,9 +26,7 @@ const Hero = () => {
                     <h1 className="hero-title">
                         <span className="greeting">{t('greeting')}</span>
                         <span className="name">Vũ Thế Huy</span>
-                        <span className="role">
-                            <span className="accent">PCB</span> & Hardware Designer
-                        </span>
+                        <span className="role">{t('role')}</span>
                     </h1>
 
                     <p className="hero-description">
@@ -55,7 +53,11 @@ const Hero = () => {
                             <span>{t('viewProjects')}</span>
                             <i className='bx bx-right-arrow-alt'></i>
                         </a>
-                        <a href="#contact" className="btn btn-secondary">
+                        <a href="/cv.pdf" download className="btn btn-secondary">
+                            <span>{t('downloadCV')}</span>
+                            <i className='bx bx-download'></i>
+                        </a>
+                        <a href="#contact" className="btn btn-outline">
                             <span>{t('getInTouch')}</span>
                             <i className='bx bx-envelope'></i>
                         </a>

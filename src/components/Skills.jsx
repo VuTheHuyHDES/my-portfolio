@@ -55,12 +55,6 @@ const Skills = () => {
             isImage: false
         },
         {
-            name: t('throughHole'),
-            description: t('throughHoleDesc'),
-            icon: 'bx-extension',
-            isImage: false
-        },
-        {
             name: t('pcbAssembly'),
             description: t('pcbAssemblyDesc'),
             icon: 'bx-microchip',
@@ -99,7 +93,7 @@ const Skills = () => {
                         <span>{t('mySkills')}</span>
                     </div>
                     <h2 className="section-title">
-                        {t('technicalExpertise').split(' ')[0]} <span className="highlight">{t('technicalExpertise').split(' ')[1] || ''}</span>
+                        {t('technicalExpertise')}
                     </h2>
                     <p className="section-subtitle">
                         {t('skillsSubtitle')}

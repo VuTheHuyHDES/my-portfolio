@@ -399,6 +399,12 @@
     animation: floatBadge 4s ease-in-out infinite;
 }
 
+[data-theme="light"] .tech-badge {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 179, 89, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 .badge-1 {
     top: 10%;
     right: -10%;

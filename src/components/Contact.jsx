@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import './Contact.css';
 
 const Contact = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         email: '',

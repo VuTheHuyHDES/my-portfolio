@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className="footer-brand">
                         <a href="#home" className="footer-logo">
                             <i className='bx bx-chip'></i>
-                            <span>PCB<span className="highlight">Designer</span></span>
+                            <span>Vũ Thế <span className="highlight">Huy</span></span>
                         </a>
                         <p className="footer-tagline">
                             Transforming electronic concepts into production-ready PCB solutions.
@@ -52,7 +52,7 @@ const Footer = () => {
 
                 <div className="footer-bottom">
                     <p className="copyright">
-                        © {currentYear} PCBDesigner. All rights reserved.
+                        © {currentYear} Vũ Thế Huy. All rights reserved.
                     </p>
                     <div className="footer-social">
                         {/* PLACEHOLDER: Replace # with your social links */}

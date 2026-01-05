@@ -26,7 +26,7 @@ const Navbar = () => {
             <div className="navbar-container">
                 <a href="#home" className="logo">
                     <i className='bx bx-chip'></i>
-                    <span>PCB<span className="highlight">Designer</span></span>
+                    <span>Vũ Thế <span className="highlight">Huy</span></span>
                 </a>
 
                 <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>

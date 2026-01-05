@@ -23,8 +23,7 @@ const Hero = () => {
                     <h1 className="hero-title">
                         <span className="greeting">Hello, I'm</span>
                         <span className="name">
-                            {/* PLACEHOLDER: Replace with your name */}
-                            Your Name Here
+                            Vũ Thế Huy
                         </span>
                         <span className="role">
                             <span className="accent">PCB</span> & Hardware Designer
@@ -83,11 +82,7 @@ const Hero = () => {
                 <div className="hero-image">
                     <div className="image-wrapper">
                         <div className="image-glow"></div>
-                        {/* PLACEHOLDER: Replace this with your actual profile image */}
-                        <div className="profile-placeholder">
-                            <i className='bx bx-user'></i>
-                            <span>Your Photo</span>
-                        </div>
+                        <img src="/profile.png" alt="Vũ Thế Huy" className="profile-image" />
                         <div className="image-border"></div>
                     </div>
                     <div className="tech-badge badge-1">

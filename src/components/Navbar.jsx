@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 import './Navbar.css';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { isDark, toggleTheme } = useTheme();
+    const { language, toggleLanguage, t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -14,11 +18,11 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Contact', href: '#contact' },
+        { name: t('home'), href: '#home' },
+        { name: t('about'), href: '#about' },
+        { name: t('skills'), href: '#skills' },
+        { name: t('projects'), href: '#projects' },
+        { name: t('contact'), href: '#contact' },
     ];
 
     return (
@@ -41,12 +45,22 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                <button
-                    className="mobile-toggle"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    <i className={`bx ${isMobileMenuOpen ? 'bx-x' : 'bx-menu'}`}></i>
-                </button>
+                <div className="nav-controls">
+                    <button className="control-btn" onClick={toggleLanguage} title="Switch Language">
+                        <span className="lang-text">{language === 'vi' ? 'EN' : 'VI'}</span>
+                    </button>
+
+                    <button className="control-btn" onClick={toggleTheme} title="Toggle Theme">
+                        <i className={`bx ${isDark ? 'bx-sun' : 'bx-moon'}`}></i>
+                    </button>
+
+                    <button
+                        className="mobile-toggle"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        <i className={`bx ${isMobileMenuOpen ? 'bx-x' : 'bx-menu'}`}></i>
+                    </button>
+                </div>
             </div>
         </nav>
     );

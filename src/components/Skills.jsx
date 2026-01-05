@@ -1,23 +1,26 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './Skills.css';
 
 const Skills = () => {
+    const { t } = useLanguage();
+
     const designTools = [
         {
             name: 'Altium Designer',
-            description: 'PCB Design & Schematic',
+            description: t('pcbDesignSchematic'),
             icon: '/logos/altium.png',
             isImage: true
         },
         {
             name: 'AutoCAD Electrical',
-            description: 'Technical Drawing & 2D/3D Design',
+            description: t('technicalDrawing'),
             icon: '/logos/autocad.png',
             isImage: true
         },
         {
             name: 'Saturn PCB',
-            description: 'PCB Design Toolkit',
+            description: t('pcbToolkit'),
             icon: '/logos/saturn-pcb.png',
             isImage: true
         },
@@ -26,19 +29,19 @@ const Skills = () => {
     const programmingSkills = [
         {
             name: 'C/C++',
-            description: 'Embedded Systems Programming',
+            description: t('embeddedProgramming'),
             icon: 'bxl-c-plus-plus',
             isImage: false
         },
         {
             name: 'Arduino',
-            description: 'Rapid Prototyping & IoT',
+            description: t('rapidPrototyping'),
             icon: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg',
             isImage: true
         },
         {
             name: 'ESP-IDF',
-            description: 'ESP32 Development Framework',
+            description: t('esp32Framework'),
             icon: '/logos/esp-idf.png',
             isImage: true
         },
@@ -46,26 +49,26 @@ const Skills = () => {
 
     const hardwareSkills = [
         {
-            name: 'SMD Soldering',
-            description: 'Surface Mount Components',
+            name: t('smdSoldering'),
+            description: t('smdDesc'),
             icon: 'bx-target-lock',
             isImage: false
         },
         {
-            name: 'Through-Hole Soldering',
-            description: 'Traditional Component Assembly',
+            name: t('throughHole'),
+            description: t('throughHoleDesc'),
             icon: 'bx-extension',
             isImage: false
         },
         {
-            name: 'PCB Assembly',
-            description: 'Full Board Assembly & Testing',
+            name: t('pcbAssembly'),
+            description: t('pcbAssemblyDesc'),
             icon: 'bx-microchip',
             isImage: false
         },
         {
-            name: 'Rework & Repair',
-            description: 'Component Replacement & Debugging',
+            name: t('rework'),
+            description: t('reworkDesc'),
             icon: 'bx-wrench',
             isImage: false
         },
@@ -93,13 +96,13 @@ const Skills = () => {
                 <div className="section-header">
                     <div className="section-label">
                         <span className="label-line"></span>
-                        <span>My Skills</span>
+                        <span>{t('mySkills')}</span>
                     </div>
                     <h2 className="section-title">
-                        Technical <span className="highlight">Expertise</span>
+                        {t('technicalExpertise').split(' ')[0]} <span className="highlight">{t('technicalExpertise').split(' ')[1] || ''}</span>
                     </h2>
                     <p className="section-subtitle">
-                        Tools, programming languages, and hands-on skills I use daily
+                        {t('skillsSubtitle')}
                     </p>
                 </div>
 
@@ -107,7 +110,7 @@ const Skills = () => {
                     <div className="skill-category">
                         <div className="category-header">
                             <i className='bx bx-chip'></i>
-                            <h3>Design Tools</h3>
+                            <h3>{t('designTools')}</h3>
                         </div>
                         <div className="skill-grid">
                             {designTools.map((skill, index) => (
@@ -119,7 +122,7 @@ const Skills = () => {
                     <div className="skill-category">
                         <div className="category-header">
                             <i className='bx bx-code-alt'></i>
-                            <h3>Programming</h3>
+                            <h3>{t('programming')}</h3>
                         </div>
                         <div className="skill-grid">
                             {programmingSkills.map((skill, index) => (
@@ -131,7 +134,7 @@ const Skills = () => {
                     <div className="skill-category">
                         <div className="category-header">
                             <i className='bx bx-wrench'></i>
-                            <h3>Hardware & Soldering</h3>
+                            <h3>{t('hardwareSoldering')}</h3>
                         </div>
                         <div className="skill-grid">
                             {hardwareSkills.map((skill, index) => (

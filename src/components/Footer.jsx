@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './Footer.css';
 
 const Footer = () => {
+    const { t } = useLanguage();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -14,30 +16,30 @@ const Footer = () => {
                             <span>Vũ Thế <span className="highlight">Huy</span></span>
                         </a>
                         <p className="footer-tagline">
-                            Transforming electronic concepts into production-ready PCB solutions.
+                            {t('footerTagline')}
                         </p>
                     </div>
 
                     <div className="footer-links">
                         <div className="footer-column">
-                            <h4>Quick Links</h4>
-                            <a href="#home">Home</a>
-                            <a href="#about">About</a>
-                            <a href="#skills">Skills</a>
-                            <a href="#projects">Projects</a>
-                            <a href="#contact">Contact</a>
+                            <h4>{t('quickLinks')}</h4>
+                            <a href="#home">{t('home')}</a>
+                            <a href="#about">{t('about')}</a>
+                            <a href="#skills">{t('skills')}</a>
+                            <a href="#projects">{t('projects')}</a>
+                            <a href="#contact">{t('contact')}</a>
                         </div>
 
                         <div className="footer-column">
-                            <h4>Services</h4>
-                            <a href="#projects">PCB Design</a>
-                            <a href="#projects">Schematic Capture</a>
-                            <a href="#projects">Hardware Development</a>
-                            <a href="#projects">Prototyping</a>
+                            <h4>{t('services')}</h4>
+                            <a href="#projects">{t('pcbDesignService')}</a>
+                            <a href="#projects">{t('schematicCapture')}</a>
+                            <a href="#projects">{t('hardwareDev')}</a>
+                            <a href="#projects">{t('prototyping')}</a>
                         </div>
 
                         <div className="footer-column">
-                            <h4>Contact</h4>
+                            <h4>{t('contact')}</h4>
                             <a href="mailto:huyyu987@gmail.com">
                                 <i className='bx bx-envelope'></i>
                                 huyyu987@gmail.com
@@ -52,10 +54,9 @@ const Footer = () => {
 
                 <div className="footer-bottom">
                     <p className="copyright">
-                        © {currentYear} Vũ Thế Huy. All rights reserved.
+                        © {currentYear} Vũ Thế Huy. {t('allRights')}
                     </p>
                     <div className="footer-social">
-                        {/* PLACEHOLDER: Replace # with your social links */}
                         <a href="#" title="Facebook"><i className='bx bxl-facebook'></i></a>
                         <a href="#" title="Instagram"><i className='bx bxl-instagram'></i></a>
                         <a href="#" title="GitHub"><i className='bx bxl-github'></i></a>

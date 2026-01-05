@@ -1,7 +1,10 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 import './Hero.css';
 
 const Hero = () => {
+    const { t } = useLanguage();
+
     return (
         <section id="home" className="hero">
             <div className="hero-background">
@@ -17,53 +20,48 @@ const Hero = () => {
                 <div className="hero-content">
                     <div className="hero-badge">
                         <i className='bx bx-check-circle'></i>
-                        <span>Available for Projects</span>
+                        <span>{t('available')}</span>
                     </div>
 
                     <h1 className="hero-title">
-                        <span className="greeting">Hello, I'm</span>
-                        <span className="name">
-                            Vũ Thế Huy
-                        </span>
+                        <span className="greeting">{t('greeting')}</span>
+                        <span className="name">Vũ Thế Huy</span>
                         <span className="role">
                             <span className="accent">PCB</span> & Hardware Designer
                         </span>
                     </h1>
 
                     <p className="hero-description">
-                        Specialized in designing high-performance printed circuit boards and
-                        embedded systems using <strong>Altium Designer</strong>. Transforming
-                        complex electronic concepts into production-ready hardware solutions.
+                        {t('heroDescription')}
                     </p>
 
                     <div className="hero-stats">
                         <div className="stat">
                             <span className="stat-value">50+</span>
-                            <span className="stat-label">PCB Designs</span>
+                            <span className="stat-label">{t('pcbDesigns')}</span>
                         </div>
                         <div className="stat">
                             <span className="stat-value">5+</span>
-                            <span className="stat-label">Years Experience</span>
+                            <span className="stat-label">{t('yearsExp')}</span>
                         </div>
                         <div className="stat">
                             <span className="stat-value">30+</span>
-                            <span className="stat-label">Happy Clients</span>
+                            <span className="stat-label">{t('happyClients')}</span>
                         </div>
                     </div>
 
                     <div className="hero-actions">
                         <a href="#projects" className="btn btn-primary">
-                            <span>View Projects</span>
+                            <span>{t('viewProjects')}</span>
                             <i className='bx bx-right-arrow-alt'></i>
                         </a>
                         <a href="#contact" className="btn btn-secondary">
-                            <span>Get in Touch</span>
+                            <span>{t('getInTouch')}</span>
                             <i className='bx bx-envelope'></i>
                         </a>
                     </div>
 
                     <div className="hero-social">
-                        {/* PLACEHOLDER: Replace # with your actual social media links */}
                         <a href="#" className="social-link" title="Facebook">
                             <i className='bx bxl-facebook'></i>
                         </a>
@@ -98,7 +96,7 @@ const Hero = () => {
             </div>
 
             <a href="#about" className="scroll-indicator">
-                <span>Scroll Down</span>
+                <span>{t('scrollDown')}</span>
                 <i className='bx bx-chevron-down'></i>
             </a>
         </section>

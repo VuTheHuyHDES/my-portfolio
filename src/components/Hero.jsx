@@ -39,11 +39,11 @@ const Hero = () => {
                             <span className="stat-label">{t('pcbDesigns')}</span>
                         </div>
                         <div className="stat">
-                            <span className="stat-value">5+</span>
+                            <span className="stat-value">1+</span>
                             <span className="stat-label">{t('yearsExp')}</span>
                         </div>
                         <div className="stat">
-                            <span className="stat-value">30+</span>
+                            <span className="stat-value">10+</span>
                             <span className="stat-label">{t('happyClients')}</span>
                         </div>
                     </div>

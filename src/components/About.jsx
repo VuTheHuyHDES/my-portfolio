@@ -21,7 +21,7 @@ const About = () => {
                             <i className='bx bx-medal'></i>
                         </div>
                         <div className="experience-content">
-                            <span className="experience-years">5+</span>
+                            <span className="experience-years">1+</span>
                             <span className="experience-label">{t('experience')}</span>
                         </div>
                     </div>

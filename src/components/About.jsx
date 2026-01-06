@@ -11,10 +11,7 @@ const About = () => {
                 <div className="about-image-section">
                     <div className="about-image-wrapper">
                         <div className="about-image-glow"></div>
-                        <div className="about-image-placeholder">
-                            <i className='bx bx-image'></i>
-                            <span>Your Workspace Image</span>
-                        </div>
+                        <img src="/workspace.png" alt="Electronics Workspace" className="about-image" />
                     </div>
                     <div className="experience-card">
                         <div className="experience-icon">

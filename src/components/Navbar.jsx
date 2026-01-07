@@ -29,7 +29,8 @@ const Navbar = () => {
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
             <div className="navbar-container">
                 <a href="#home" className="logo">
-                    <img src="/logo.png" alt="HΩY" className="logo-img" />
+                    <i className='bx bx-chip'></i>
+                    <span>Vũ Thế <span className="highlight">Huy</span></span>
                 </a>
 
                 <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>

@@ -12,7 +12,8 @@ const Footer = () => {
                 <div className="footer-top">
                     <div className="footer-brand">
                         <a href="#home" className="footer-logo">
-                            <img src="/logo.png" alt="HΩY" className="logo-img" />
+                            <i className='bx bx-chip'></i>
+                            <span>Vũ Thế <span className="highlight">Huy</span></span>
                         </a>
                         <p className="footer-tagline">
                             {t('footerTagline')}

@@ -115,12 +115,17 @@ const Hobbies = () => {
         },
         {
             id: 3,
-            titleVi: 'Sở thích 3',
-            titleEn: 'Hobby 3',
-            icon: 'bx-plus-circle',
-            descriptionVi: 'Thêm sở thích của bạn',
-            descriptionEn: 'Add your hobby',
-            isEmpty: true
+            titleVi: 'Chơi game',
+            titleEn: 'Gaming',
+            icon: 'bx-joystick',
+            descriptionVi: 'Đam mê các tựa game cạnh tranh',
+            descriptionEn: 'Passionate about competitive games',
+            hasGames: true,
+            games: [
+                { name: 'League of Legends', logo: '/games/lol.png', genre: 'MOBA' },
+                { name: 'Valorant', logo: '/games/valorant.png', genre: 'FPS' },
+                { name: 'Naraka: Bladepoint', logo: '/games/naraka.png', genre: 'Battle Royale' }
+            ]
         },
     ];
 
@@ -252,6 +257,22 @@ const Hobbies = () => {
                                                     <div className="team-info">
                                                         <span className="team-name">{team.name}</span>
                                                         <span className="team-league">{team.league}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {hobby.hasGames && (
+                                    <div className="games-section">
+                                        <div className="games-grid">
+                                            {hobby.games.map((game, index) => (
+                                                <div key={index} className="game-card">
+                                                    <img src={game.logo} alt={game.name} className="game-logo" />
+                                                    <div className="game-info">
+                                                        <span className="game-name">{game.name}</span>
+                                                        <span className="game-genre">{game.genre}</span>
                                                     </div>
                                                 </div>
                                             ))}

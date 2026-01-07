@@ -75,13 +75,31 @@
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .hobby-description {
     font-size: 0.95rem;
     color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+/* Hobby Header - Icon + Text side by side */
+.hobby-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 1.5rem;
+}
+
+.hobby-header .hobby-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.hobby-header-text {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Music Player */

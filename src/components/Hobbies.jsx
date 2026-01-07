@@ -150,16 +150,20 @@ const Hobbies = () => {
                 <div className="hobbies-grid">
                     {hobbies.map((hobby) => (
                         <div key={hobby.id} className={`hobby-card ${hobby.isEmpty ? 'empty' : ''}`}>
-                            <div className="hobby-icon">
-                                <i className={`bx ${hobby.icon}`}></i>
+                            <div className="hobby-header">
+                                <div className="hobby-icon">
+                                    <i className={`bx ${hobby.icon}`}></i>
+                                </div>
+                                <div className="hobby-header-text">
+                                    <h3 className="hobby-title">
+                                        {language === 'vi' ? hobby.titleVi : hobby.titleEn}
+                                    </h3>
+                                    <p className="hobby-description">
+                                        {language === 'vi' ? hobby.descriptionVi : hobby.descriptionEn}
+                                    </p>
+                                </div>
                             </div>
                             <div className="hobby-content">
-                                <h3 className="hobby-title">
-                                    {language === 'vi' ? hobby.titleVi : hobby.titleEn}
-                                </h3>
-                                <p className="hobby-description">
-                                    {language === 'vi' ? hobby.descriptionVi : hobby.descriptionEn}
-                                </p>
 
                                 {hobby.hasPlayer && (
                                     <div className="music-player">

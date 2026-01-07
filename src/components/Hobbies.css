@@ -59,6 +59,51 @@
     color: var(--bg-primary);
 }
 
+.hobby-icon.playing {
+    animation: albumPulse 2s ease-in-out infinite;
+}
+
+/* Hobby Icon Visualizer */
+.hobby-visualizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: 30px;
+}
+
+.hobby-visualizer .bar {
+    width: 5px;
+    background: var(--bg-primary);
+    border-radius: 2px;
+    animation: visualizerBar 0.5s ease-in-out infinite alternate;
+}
+
+.hobby-visualizer .bar:nth-child(1) {
+    height: 12px;
+    animation-delay: 0s;
+}
+
+.hobby-visualizer .bar:nth-child(2) {
+    height: 22px;
+    animation-delay: 0.1s;
+}
+
+.hobby-visualizer .bar:nth-child(3) {
+    height: 28px;
+    animation-delay: 0.2s;
+}
+
+.hobby-visualizer .bar:nth-child(4) {
+    height: 18px;
+    animation-delay: 0.3s;
+}
+
+.hobby-visualizer .bar:nth-child(5) {
+    height: 20px;
+    animation-delay: 0.4s;
+}
+
 .hobby-card.empty .hobby-icon {
     background: rgba(255, 255, 255, 0.1);
 }

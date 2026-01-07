@@ -23,8 +23,8 @@ function App() {
             <Skills />
             <Awards />
             <Projects />
-            <Contact />
             <Hobbies />
+            <Contact />
           </main>
           <Footer />
         </div>

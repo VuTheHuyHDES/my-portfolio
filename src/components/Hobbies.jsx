@@ -154,8 +154,18 @@ const Hobbies = () => {
                     {hobbies.map((hobby) => (
                         <div key={hobby.id} className={`hobby-card ${hobby.isEmpty ? 'empty' : ''}`}>
                             <div className="hobby-header">
-                                <div className="hobby-icon">
-                                    <i className={`bx ${hobby.icon}`}></i>
+                                <div className={`hobby-icon ${hobby.hasPlayer && isPlaying ? 'playing' : ''}`}>
+                                    {hobby.hasPlayer && isPlaying ? (
+                                        <div className="hobby-visualizer">
+                                            <div className="bar"></div>
+                                            <div className="bar"></div>
+                                            <div className="bar"></div>
+                                            <div className="bar"></div>
+                                            <div className="bar"></div>
+                                        </div>
+                                    ) : (
+                                        <i className={`bx ${hobby.icon}`}></i>
+                                    )}
                                 </div>
                                 <div className="hobby-header-text">
                                     <h3 className="hobby-title">

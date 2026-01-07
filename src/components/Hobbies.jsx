@@ -101,12 +101,17 @@ const Hobbies = () => {
         },
         {
             id: 2,
-            titleVi: 'Sở thích 2',
-            titleEn: 'Hobby 2',
-            icon: 'bx-plus-circle',
-            descriptionVi: 'Thêm sở thích của bạn',
-            descriptionEn: 'Add your hobby',
-            isEmpty: true
+            titleVi: 'Bóng đá',
+            titleEn: 'Football',
+            icon: 'bx-football',
+            descriptionVi: 'Đam mê bóng đá và các giải đấu hàng đầu',
+            descriptionEn: 'Passionate about football and top leagues',
+            hasTeams: true,
+            teams: [
+                { name: 'Manchester United', logo: '/teams/manchester-united.png', league: 'Premier League' },
+                { name: 'Real Madrid', logo: '/teams/real-madrid.png', league: 'La Liga' },
+                { name: 'SSC Napoli', logo: '/teams/napoli.png', league: 'Serie A' }
+            ]
         },
         {
             id: 3,
@@ -222,6 +227,22 @@ const Hobbies = () => {
                                                     <div className="playlist-info">
                                                         <span className="playlist-title">{track.title}</span>
                                                         <span className="playlist-artist">{track.artist}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {hobby.hasTeams && (
+                                    <div className="teams-section">
+                                        <div className="teams-grid">
+                                            {hobby.teams.map((team, index) => (
+                                                <div key={index} className="team-card">
+                                                    <img src={team.logo} alt={team.name} className="team-logo" />
+                                                    <div className="team-info">
+                                                        <span className="team-name">{team.name}</span>
+                                                        <span className="team-league">{team.league}</span>
                                                     </div>
                                                 </div>
                                             ))}

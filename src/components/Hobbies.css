@@ -309,6 +309,62 @@
     animation: pulse 1s ease-in-out infinite;
 }
 
+/* Teams Section */
+.teams-section {
+    margin-top: 1rem;
+}
+
+.teams-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.team-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .team-card {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.team-card:hover {
+    background: rgba(0, 255, 136, 0.08);
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: translateX(5px);
+}
+
+.team-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.team-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.team-league {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
 @keyframes pulse {
 
     0%,

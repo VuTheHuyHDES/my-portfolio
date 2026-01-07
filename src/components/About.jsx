@@ -13,6 +13,15 @@ const About = () => {
                         <div className="about-image-glow"></div>
                         <img src="/workspace.png" alt="Electronics Workspace" className="about-image" />
                     </div>
+                    <div className="experience-card">
+                        <div className="experience-icon">
+                            <i className='bx bx-medal'></i>
+                        </div>
+                        <div className="experience-content">
+                            <span className="experience-years">1+</span>
+                            <span className="experience-label">{t('experience')}</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="about-content">

@@ -15,17 +15,20 @@ const Hobbies = () => {
         {
             title: 'End of Beginning',
             artist: 'Djo',
-            file: '/music/end-of-beginning.mp3'
+            file: '/music/end-of-beginning.mp3',
+            cover: '/music/covers/end-of-beginning.png'
         },
         {
             title: 'Chỉ Một Đêm Nữa Thôi',
             artist: 'MCK',
-            file: '/music/Chỉ Một Đêm Nữa Thôi.mp3'
+            file: '/music/Chỉ Một Đêm Nữa Thôi.mp3',
+            cover: '/music/covers/chi-mot-dem-nua-thoi.png'
         },
         {
             title: 'CRAZY',
             artist: 'LE SSERAFIM',
-            file: '/music/CRAZY.mp3'
+            file: '/music/CRAZY.mp3',
+            cover: '/music/covers/crazy.png'
         }
     ];
 
@@ -179,16 +182,17 @@ const Hobbies = () => {
                                         {/* Album Art & Track Info */}
                                         <div className="now-playing">
                                             <div className={`album-art ${isPlaying ? 'playing' : ''}`}>
-                                                {isPlaying ? (
-                                                    <div className="visualizer">
-                                                        <div className="bar"></div>
-                                                        <div className="bar"></div>
-                                                        <div className="bar"></div>
-                                                        <div className="bar"></div>
-                                                        <div className="bar"></div>
+                                                <img src={playlist[currentTrack].cover} alt={playlist[currentTrack].title} className="album-cover" />
+                                                {isPlaying && (
+                                                    <div className="visualizer-overlay">
+                                                        <div className="visualizer">
+                                                            <div className="bar"></div>
+                                                            <div className="bar"></div>
+                                                            <div className="bar"></div>
+                                                            <div className="bar"></div>
+                                                            <div className="bar"></div>
+                                                        </div>
                                                     </div>
-                                                ) : (
-                                                    <i className='bx bx-album'></i>
                                                 )}
                                             </div>
                                             <div className="track-info">

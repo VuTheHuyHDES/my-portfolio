@@ -15,6 +15,13 @@
 
 .about-image-section {
     position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.about-content {
+    position: relative;
+    z-index: 2;
 }
 
 .about-image-wrapper {

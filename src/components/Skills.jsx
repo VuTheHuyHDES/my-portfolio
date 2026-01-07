@@ -34,6 +34,24 @@ const Skills = () => {
             isImage: false
         },
         {
+            name: 'Python',
+            description: t('pythonDesc'),
+            icon: 'bxl-python',
+            isImage: false
+        },
+        {
+            name: 'HTML/CSS',
+            description: t('htmlCssDesc'),
+            icon: 'bxl-html5',
+            isImage: false
+        },
+        {
+            name: 'JavaScript',
+            description: t('javascriptDesc'),
+            icon: 'bxl-javascript',
+            isImage: false
+        },
+        {
             name: 'Arduino',
             description: t('rapidPrototyping'),
             icon: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg',

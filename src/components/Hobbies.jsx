@@ -169,9 +169,18 @@ const Hobbies = () => {
 
                                         {/* Album Art & Track Info */}
                                         <div className="now-playing">
-                                            <div className="album-art">
-                                                <i className='bx bx-album'></i>
-                                                {isPlaying && <div className="playing-animation"></div>}
+                                            <div className={`album-art ${isPlaying ? 'playing' : ''}`}>
+                                                {isPlaying ? (
+                                                    <div className="visualizer">
+                                                        <div className="bar"></div>
+                                                        <div className="bar"></div>
+                                                        <div className="bar"></div>
+                                                        <div className="bar"></div>
+                                                        <div className="bar"></div>
+                                                    </div>
+                                                ) : (
+                                                    <i className='bx bx-album'></i>
+                                                )}
                                             </div>
                                             <div className="track-info">
                                                 <span className="track-title">{playlist[currentTrack].title}</span>

@@ -117,11 +117,71 @@
     color: var(--bg-primary);
 }
 
-.playing-animation {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    animation: pulse 1s ease-in-out infinite;
+.album-art.playing {
+    animation: albumPulse 2s ease-in-out infinite;
+}
+
+/* Deezer-style Visualizer */
+.visualizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: 30px;
+}
+
+.visualizer .bar {
+    width: 4px;
+    background: var(--bg-primary);
+    border-radius: 2px;
+    animation: visualizerBar 0.5s ease-in-out infinite alternate;
+}
+
+.visualizer .bar:nth-child(1) {
+    height: 10px;
+    animation-delay: 0s;
+}
+
+.visualizer .bar:nth-child(2) {
+    height: 20px;
+    animation-delay: 0.1s;
+}
+
+.visualizer .bar:nth-child(3) {
+    height: 25px;
+    animation-delay: 0.2s;
+}
+
+.visualizer .bar:nth-child(4) {
+    height: 15px;
+    animation-delay: 0.3s;
+}
+
+.visualizer .bar:nth-child(5) {
+    height: 18px;
+    animation-delay: 0.4s;
+}
+
+@keyframes visualizerBar {
+    0% {
+        transform: scaleY(0.3);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes albumPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 255, 136, 0.8);
+    }
 }
 
 .track-info {

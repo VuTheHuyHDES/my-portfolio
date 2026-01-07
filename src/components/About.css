@@ -17,20 +17,15 @@
 
 .about-image-section {
     position: relative;
-    overflow: visible;
-    padding-bottom: 30px;
-    padding-right: 30px;
 }
 
 .about-content {
     position: relative;
-    z-index: 2;
 }
 
 .about-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 4/3;
     border-radius: 30px;
     overflow: hidden;
 }

@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import './Hobbies.css';
 
 const Hobbies = () => {
     const { language } = useLanguage();
+    const [currentTrack, setCurrentTrack] = useState(0);
+
+    const playlist = [
+        {
+            title: 'End of Beginning',
+            artist: 'Djo',
+            youtubeId: 'Jr1sLmJvlwE'
+        },
+        {
+            title: 'Victory Lap',
+            artist: 'Five',
+            youtubeId: 'onPR4r2Bweg'
+        },
+        {
+            title: 'Khi Mà',
+            artist: 'Ronboogz',
+            youtubeId: 'uEibsabKqYI'
+        }
+    ];
+
+    const handlePrevious = () => {
+        setCurrentTrack(prev => prev === 0 ? playlist.length - 1 : prev - 1);
+    };
+
+    const handleNext = () => {
+        setCurrentTrack(prev => prev === playlist.length - 1 ? 0 : prev + 1);
+    };
 
     const hobbies = [
         {
@@ -13,11 +40,7 @@ const Hobbies = () => {
             icon: 'bx-music',
             descriptionVi: 'Yêu thích các thể loại nhạc đa dạng',
             descriptionEn: 'Enjoy various music genres',
-            hasPlayer: true,
-            songTitle: 'End of Beginning',
-            artist: 'Djo',
-            // YouTube video ID for End of Beginning by Djo
-            youtubeId: 'Jr1sLmJvlwE'
+            hasPlayer: true
         },
         {
             id: 2,
@@ -26,7 +49,6 @@ const Hobbies = () => {
             icon: 'bx-plus-circle',
             descriptionVi: 'Thêm sở thích của bạn',
             descriptionEn: 'Add your hobby',
-            hasPlayer: false,
             isEmpty: true
         },
         {
@@ -36,7 +58,6 @@ const Hobbies = () => {
             icon: 'bx-plus-circle',
             descriptionVi: 'Thêm sở thích của bạn',
             descriptionEn: 'Add your hobby',
-            hasPlayer: false,
             isEmpty: true
         },
     ];
@@ -75,23 +96,60 @@ const Hobbies = () => {
 
                                 {hobby.hasPlayer && (
                                     <div className="music-player">
-                                        <div className="song-info">
-                                            <i className='bx bx-album'></i>
-                                            <div className="song-details">
-                                                <span className="song-title">{hobby.songTitle}</span>
-                                                <span className="song-artist">{hobby.artist}</span>
+                                        {/* Current Track Info */}
+                                        <div className="now-playing">
+                                            <div className="track-info">
+                                                <span className="track-title">{playlist[currentTrack].title}</span>
+                                                <span className="track-artist">{playlist[currentTrack].artist}</span>
                                             </div>
+                                            <span className="track-number">{currentTrack + 1} / {playlist.length}</span>
                                         </div>
+
+                                        {/* Player Controls */}
+                                        <div className="player-controls">
+                                            <button className="control-btn" onClick={handlePrevious} title="Previous">
+                                                <i className='bx bx-skip-previous'></i>
+                                            </button>
+                                            <button className="control-btn play-btn" title="Play on YouTube">
+                                                <i className='bx bx-play'></i>
+                                            </button>
+                                            <button className="control-btn" onClick={handleNext} title="Next">
+                                                <i className='bx bx-skip-next'></i>
+                                            </button>
+                                        </div>
+
+                                        {/* YouTube Embed */}
                                         <div className="youtube-embed">
                                             <iframe
-                                                src={`https://www.youtube.com/embed/${hobby.youtubeId}?autoplay=0&loop=1`}
+                                                key={currentTrack}
+                                                src={`https://www.youtube.com/embed/${playlist[currentTrack].youtubeId}?autoplay=0`}
                                                 width="100%"
-                                                height="200"
+                                                height="180"
                                                 frameBorder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                 allowFullScreen
-                                                title={hobby.songTitle}
+                                                title={playlist[currentTrack].title}
                                             ></iframe>
+                                        </div>
+
+                                        {/* Playlist */}
+                                        <div className="playlist">
+                                            {playlist.map((track, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={`playlist-item ${index === currentTrack ? 'active' : ''}`}
+                                                    onClick={() => setCurrentTrack(index)}
+                                                >
+                                                    <div className="playlist-number">{index + 1}</div>
+                                                    <div className="playlist-info">
+                                                        <span className="playlist-title">{track.title}</span>
+                                                        <span className="playlist-artist">{track.artist}</span>
+                                                    </div>
+                                                    {index === currentTrack && (
+                                                        <i className='bx bx-equalizer playing-icon'></i>
+                                                    )}
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 )}

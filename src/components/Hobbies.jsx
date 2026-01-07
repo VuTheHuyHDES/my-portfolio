@@ -8,6 +8,8 @@ const Hobbies = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [showPlaylist, setShowPlaylist] = useState(false);
+    const [repeatMode, setRepeatMode] = useState(0); // 0: off, 1: repeat all, 2: repeat one
     const audioRef = useRef(null);
 
     // Playlist - Đặt file MP3 vào thư mục public/music/
@@ -81,8 +83,33 @@ const Hobbies = () => {
     };
 
     const handleEnded = () => {
-        handleNext();
-        setIsPlaying(true);
+        if (repeatMode === 2) {
+            // Repeat one: replay current track
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+        } else if (repeatMode === 1) {
+            // Repeat all: go to next, loop to start
+            handleNext();
+            setIsPlaying(true);
+        } else {
+            // No repeat: stop at end of playlist
+            if (currentTrack === playlist.length - 1) {
+                setIsPlaying(false);
+            } else {
+                handleNext();
+                setIsPlaying(true);
+            }
+        }
+    };
+
+    const handleRepeatToggle = () => {
+        setRepeatMode(prev => (prev + 1) % 3);
+    };
+
+    const getRepeatIcon = () => {
+        if (repeatMode === 0) return 'bx-repeat';
+        if (repeatMode === 1) return 'bx-repeat';
+        return 'bx-repeat'; // repeat one uses same icon with "1"
     };
 
     const formatTime = (time) => {
@@ -189,8 +216,8 @@ const Hobbies = () => {
                                             onLoadedMetadata={handleTimeUpdate}
                                         />
 
-                                        {/* Album Art & Track Info */}
-                                        <div className="now-playing">
+                                        {/* Album Art & Track Info - Click to show playlist */}
+                                        <div className="now-playing" onClick={() => setShowPlaylist(!showPlaylist)}>
                                             <div className={`album-art ${isPlaying ? 'playing' : ''}`}>
                                                 <img src={playlist[currentTrack].cover} alt={playlist[currentTrack].title} className="album-cover" />
                                                 {isPlaying && (
@@ -208,6 +235,9 @@ const Hobbies = () => {
                                             <div className="track-info">
                                                 <span className="track-title">{playlist[currentTrack].title}</span>
                                                 <span className="track-artist">{playlist[currentTrack].artist}</span>
+                                            </div>
+                                            <div className="playlist-toggle">
+                                                <i className={`bx ${showPlaylist ? 'bx-chevron-up' : 'bx-chevron-down'}`}></i>
                                             </div>
                                         </div>
 
@@ -227,6 +257,14 @@ const Hobbies = () => {
 
                                         {/* Player Controls */}
                                         <div className="player-controls">
+                                            <button
+                                                className={`control-btn repeat-btn ${repeatMode > 0 ? 'active' : ''}`}
+                                                onClick={handleRepeatToggle}
+                                                title={repeatMode === 0 ? 'Repeat off' : repeatMode === 1 ? 'Repeat all' : 'Repeat one'}
+                                            >
+                                                <i className='bx bx-repeat'></i>
+                                                {repeatMode === 2 && <span className="repeat-one">1</span>}
+                                            </button>
                                             <button className="control-btn" onClick={handlePrevious} title="Previous">
                                                 <i className='bx bx-skip-previous'></i>
                                             </button>
@@ -236,33 +274,42 @@ const Hobbies = () => {
                                             <button className="control-btn" onClick={handleNext} title="Next">
                                                 <i className='bx bx-skip-next'></i>
                                             </button>
+                                            <div className="control-btn placeholder"></div>
                                         </div>
 
-                                        {/* Playlist */}
-                                        <div className="playlist">
-                                            {playlist.map((track, index) => (
-                                                <div
-                                                    key={index}
-                                                    className={`playlist-item ${index === currentTrack ? 'active' : ''}`}
-                                                    onClick={() => {
-                                                        setCurrentTrack(index);
-                                                        setIsPlaying(true);
-                                                    }}
-                                                >
-                                                    <div className="playlist-number">
-                                                        {index === currentTrack && isPlaying ? (
-                                                            <i className='bx bx-equalizer'></i>
-                                                        ) : (
-                                                            index + 1
-                                                        )}
-                                                    </div>
-                                                    <div className="playlist-info">
-                                                        <span className="playlist-title">{track.title}</span>
-                                                        <span className="playlist-artist">{track.artist}</span>
-                                                    </div>
+                                        {/* Playlist Popup */}
+                                        {showPlaylist && (
+                                            <div className="playlist-popup">
+                                                <div className="playlist-header">
+                                                    <span>{language === 'vi' ? 'Danh sách phát' : 'Playlist'}</span>
+                                                    <button onClick={() => setShowPlaylist(false)}>
+                                                        <i className='bx bx-x'></i>
+                                                    </button>
                                                 </div>
-                                            ))}
-                                        </div>
+                                                <div className="playlist">
+                                                    {playlist.map((track, index) => (
+                                                        <div
+                                                            key={index}
+                                                            className={`playlist-item ${index === currentTrack ? 'active' : ''}`}
+                                                            onClick={() => {
+                                                                setCurrentTrack(index);
+                                                                setIsPlaying(true);
+                                                                setShowPlaylist(false);
+                                                            }}
+                                                        >
+                                                            <img src={track.cover} alt={track.title} className="playlist-cover" />
+                                                            <div className="playlist-info">
+                                                                <span className="playlist-title">{track.title}</span>
+                                                                <span className="playlist-artist">{track.artist}</span>
+                                                            </div>
+                                                            {index === currentTrack && isPlaying && (
+                                                                <i className='bx bx-equalizer playing-icon'></i>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 

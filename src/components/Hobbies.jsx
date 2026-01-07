@@ -1,11 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import './Hobbies.css';
 
 const Hobbies = () => {
     const { language } = useLanguage();
-    const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
 
     const hobbies = [
         {
@@ -18,8 +16,8 @@ const Hobbies = () => {
             hasPlayer: true,
             songTitle: 'End of Beginning',
             artist: 'Djo',
-            // Spotify embed for End of Beginning by Djo
-            spotifyId: '58zsLZPvfflaiIbNWoA22O'
+            // YouTube video ID for End of Beginning by Djo
+            youtubeId: 'Jr1sLmJvlwE'
         },
         {
             id: 2,
@@ -84,16 +82,17 @@ const Hobbies = () => {
                                                 <span className="song-artist">{hobby.artist}</span>
                                             </div>
                                         </div>
-                                        <iframe
-                                            src={`https://open.spotify.com/embed/track/${hobby.spotifyId}?utm_source=generator&theme=0`}
-                                            width="100%"
-                                            height="80"
-                                            frameBorder="0"
-                                            allowFullScreen=""
-                                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                            loading="lazy"
-                                            className="spotify-embed"
-                                        ></iframe>
+                                        <div className="youtube-embed">
+                                            <iframe
+                                                src={`https://www.youtube.com/embed/${hobby.youtubeId}?autoplay=0&loop=1`}
+                                                width="100%"
+                                                height="200"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                                title={hobby.songTitle}
+                                            ></iframe>
+                                        </div>
                                     </div>
                                 )}
                             </div>

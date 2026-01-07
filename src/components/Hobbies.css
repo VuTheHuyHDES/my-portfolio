@@ -120,9 +120,14 @@
     color: var(--text-muted);
 }
 
-.spotify-embed {
+.youtube-embed {
     border-radius: 12px;
+    overflow: hidden;
     margin-top: 0.5rem;
+}
+
+.youtube-embed iframe {
+    border-radius: 12px;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,140 @@
+.hobbies {
+    padding: 8rem 2rem;
+    position: relative;
+    background: var(--bg-primary);
+}
+
+.hobbies-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.hobby-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .hobby-card {
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.hobby-card:hover {
+    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: translateY(-5px);
+}
+
+.hobby-card.empty {
+    opacity: 0.5;
+    border-style: dashed;
+}
+
+.hobby-card.empty:hover {
+    opacity: 0.7;
+}
+
+.hobby-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.hobby-icon i {
+    font-size: 2rem;
+    color: var(--bg-primary);
+}
+
+.hobby-card.empty .hobby-icon {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .hobby-card.empty .hobby-icon {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.hobby-card.empty .hobby-icon i {
+    color: var(--text-muted);
+}
+
+.hobby-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.hobby-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Music Player */
+.music-player {
+    margin-top: 1rem;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 15px;
+}
+
+.song-info>i {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.song-artist {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.spotify-embed {
+    border-radius: 12px;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .hobbies {
+        padding: 5rem 1.5rem;
+    }
+
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hobby-card {
+        padding: 1.5rem;
+    }
+}

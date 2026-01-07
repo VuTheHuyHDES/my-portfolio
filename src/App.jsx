@@ -3,6 +3,7 @@ import { LanguageProvider } from './context/LanguageContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Hobbies from './components/Hobbies'
 import Skills from './components/Skills'
 import Awards from './components/Awards'
 import Projects from './components/Projects'
@@ -19,6 +20,7 @@ function App() {
           <main>
             <Hero />
             <About />
+            <Hobbies />
             <Skills />
             <Awards />
             <Projects />

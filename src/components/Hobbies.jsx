@@ -18,14 +18,14 @@ const Hobbies = () => {
             file: '/music/end-of-beginning.mp3'
         },
         {
-            title: 'Victory Lap',
-            artist: 'Five',
-            file: '/music/victory-lap.mp3'
+            title: 'Chỉ Một Đêm Nữa Thôi',
+            artist: 'MCK',
+            file: '/music/Chỉ Một Đêm Nữa Thôi.mp3'
         },
         {
-            title: 'Khi Mà',
-            artist: 'Ronboogz',
-            file: '/music/khi-ma.mp3'
+            title: 'CRAZY',
+            artist: 'LE SSERAFIM',
+            file: '/music/CRAZY.mp3'
         }
     ];
 

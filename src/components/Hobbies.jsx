@@ -1,28 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import './Hobbies.css';
 
 const Hobbies = () => {
     const { language } = useLanguage();
     const [currentTrack, setCurrentTrack] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const audioRef = useRef(null);
 
+    // Playlist - Đặt file MP3 vào thư mục public/music/
     const playlist = [
         {
             title: 'End of Beginning',
             artist: 'Djo',
-            youtubeId: 'Jr1sLmJvlwE'
+            file: '/music/end-of-beginning.mp3'
         },
         {
             title: 'Victory Lap',
             artist: 'Five',
-            youtubeId: 'onPR4r2Bweg'
+            file: '/music/victory-lap.mp3'
         },
         {
             title: 'Khi Mà',
             artist: 'Ronboogz',
-            youtubeId: 'uEibsabKqYI'
+            file: '/music/khi-ma.mp3'
         }
     ];
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.load();
+            if (isPlaying) {
+                audioRef.current.play().catch(() => { });
+            }
+        }
+    }, [currentTrack]);
+
+    const handlePlayPause = () => {
+        if (audioRef.current) {
+            if (isPlaying) {
+                audioRef.current.pause();
+            } else {
+                audioRef.current.play().catch(() => {
+                    alert(language === 'vi'
+                        ? 'Vui lòng thêm file MP3 vào thư mục public/music/'
+                        : 'Please add MP3 files to public/music/ folder');
+                });
+            }
+            setIsPlaying(!isPlaying);
+        }
+    };
 
     const handlePrevious = () => {
         setCurrentTrack(prev => prev === 0 ? playlist.length - 1 : prev - 1);
@@ -30,6 +60,33 @@ const Hobbies = () => {
 
     const handleNext = () => {
         setCurrentTrack(prev => prev === playlist.length - 1 ? 0 : prev + 1);
+    };
+
+    const handleTimeUpdate = () => {
+        if (audioRef.current) {
+            setProgress(audioRef.current.currentTime);
+            setDuration(audioRef.current.duration || 0);
+        }
+    };
+
+    const handleProgressClick = (e) => {
+        if (audioRef.current && duration) {
+            const rect = e.target.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audioRef.current.currentTime = percent * duration;
+        }
+    };
+
+    const handleEnded = () => {
+        handleNext();
+        setIsPlaying(true);
+    };
+
+    const formatTime = (time) => {
+        if (!time || isNaN(time)) return '0:00';
+        const mins = Math.floor(time / 60);
+        const secs = Math.floor(time % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
 
     const hobbies = [
@@ -96,13 +153,39 @@ const Hobbies = () => {
 
                                 {hobby.hasPlayer && (
                                     <div className="music-player">
-                                        {/* Current Track Info */}
+                                        {/* Hidden Audio Element */}
+                                        <audio
+                                            ref={audioRef}
+                                            src={playlist[currentTrack].file}
+                                            onTimeUpdate={handleTimeUpdate}
+                                            onEnded={handleEnded}
+                                            onLoadedMetadata={handleTimeUpdate}
+                                        />
+
+                                        {/* Album Art & Track Info */}
                                         <div className="now-playing">
+                                            <div className="album-art">
+                                                <i className='bx bx-album'></i>
+                                                {isPlaying && <div className="playing-animation"></div>}
+                                            </div>
                                             <div className="track-info">
                                                 <span className="track-title">{playlist[currentTrack].title}</span>
                                                 <span className="track-artist">{playlist[currentTrack].artist}</span>
                                             </div>
-                                            <span className="track-number">{currentTrack + 1} / {playlist.length}</span>
+                                        </div>
+
+                                        {/* Progress Bar */}
+                                        <div className="progress-container" onClick={handleProgressClick}>
+                                            <div className="progress-bar">
+                                                <div
+                                                    className="progress-fill"
+                                                    style={{ width: duration ? `${(progress / duration) * 100}%` : '0%' }}
+                                                ></div>
+                                            </div>
+                                            <div className="time-display">
+                                                <span>{formatTime(progress)}</span>
+                                                <span>{formatTime(duration)}</span>
+                                            </div>
                                         </div>
 
                                         {/* Player Controls */}
@@ -110,26 +193,12 @@ const Hobbies = () => {
                                             <button className="control-btn" onClick={handlePrevious} title="Previous">
                                                 <i className='bx bx-skip-previous'></i>
                                             </button>
-                                            <button className="control-btn play-btn" title="Play on YouTube">
-                                                <i className='bx bx-play'></i>
+                                            <button className="control-btn play-btn" onClick={handlePlayPause} title={isPlaying ? 'Pause' : 'Play'}>
+                                                <i className={`bx ${isPlaying ? 'bx-pause' : 'bx-play'}`}></i>
                                             </button>
                                             <button className="control-btn" onClick={handleNext} title="Next">
                                                 <i className='bx bx-skip-next'></i>
                                             </button>
-                                        </div>
-
-                                        {/* YouTube Embed */}
-                                        <div className="youtube-embed">
-                                            <iframe
-                                                key={currentTrack}
-                                                src={`https://www.youtube.com/embed/${playlist[currentTrack].youtubeId}?autoplay=0`}
-                                                width="100%"
-                                                height="180"
-                                                frameBorder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                                title={playlist[currentTrack].title}
-                                            ></iframe>
                                         </div>
 
                                         {/* Playlist */}
@@ -138,16 +207,22 @@ const Hobbies = () => {
                                                 <div
                                                     key={index}
                                                     className={`playlist-item ${index === currentTrack ? 'active' : ''}`}
-                                                    onClick={() => setCurrentTrack(index)}
+                                                    onClick={() => {
+                                                        setCurrentTrack(index);
+                                                        setIsPlaying(true);
+                                                    }}
                                                 >
-                                                    <div className="playlist-number">{index + 1}</div>
+                                                    <div className="playlist-number">
+                                                        {index === currentTrack && isPlaying ? (
+                                                            <i className='bx bx-equalizer'></i>
+                                                        ) : (
+                                                            index + 1
+                                                        )}
+                                                    </div>
                                                     <div className="playlist-info">
                                                         <span className="playlist-title">{track.title}</span>
                                                         <span className="playlist-artist">{track.artist}</span>
                                                     </div>
-                                                    {index === currentTrack && (
-                                                        <i className='bx bx-equalizer playing-icon'></i>
-                                                    )}
                                                 </div>
                                             ))}
                                         </div>

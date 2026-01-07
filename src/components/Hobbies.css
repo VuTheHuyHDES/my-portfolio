@@ -92,17 +92,42 @@
 /* Now Playing */
 .now-playing {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     padding: 1rem;
     background: rgba(0, 255, 136, 0.1);
     border-radius: 15px;
     margin-bottom: 1rem;
 }
 
+.album-art {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.album-art i {
+    font-size: 1.75rem;
+    color: var(--bg-primary);
+}
+
+.playing-animation {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    animation: pulse 1s ease-in-out infinite;
+}
+
 .track-info {
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .track-title {
@@ -116,12 +141,36 @@
     color: var(--accent-primary);
 }
 
-.track-number {
-    font-size: 0.8rem;
+/* Progress Bar */
+.progress-container {
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="light"] .progress-bar {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
     color: var(--text-muted);
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.25rem 0.75rem;
-    border-radius: 10px;
 }
 
 /* Player Controls */

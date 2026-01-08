@@ -50,6 +50,29 @@ const Awards = () => {
             descriptionVi: 'Chứng chỉ đào tạo chuyên sâu về IoT từ Samsung',
             descriptionEn: 'Professional IoT training certification from Samsung'
         },
+        {
+            id: 5,
+            titleVi: 'Gemini Certified Educator',
+            titleEn: 'Gemini Certified Educator',
+            organizationVi: 'Google for Education',
+            organizationEn: 'Google for Education',
+            year: '2026',
+            icon: 'bx-bot',
+            image: '/certificates/gemini-badge.png',
+            descriptionVi: 'Chứng chỉ Google AI trong giáo dục - Có hiệu lực đến 2029',
+            descriptionEn: 'Google AI in Education certification - Valid through 2029'
+        },
+        {
+            id: 6,
+            titleVi: 'Altium PCB Basic Design Course',
+            titleEn: 'Altium PCB Basic Design Course',
+            organizationVi: 'Altium Education',
+            organizationEn: 'Altium Education',
+            year: '2026',
+            icon: 'bx-chip',
+            descriptionVi: 'Chứng chỉ hoàn thành khóa học thiết kế PCB cơ bản',
+            descriptionEn: 'Certificate of completion for PCB basic design course'
+        },
     ];
 
     const education = [
